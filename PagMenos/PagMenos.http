@@ -1,0 +1,6 @@
+@PagMenos_HostAddress = http://localhost:5201
+
+GET {{PagMenos_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
