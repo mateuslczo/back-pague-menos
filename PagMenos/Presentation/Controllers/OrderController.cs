@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using OrderDataManagement.Domain.Entities;
+using PagMenos.Domain.Entities;
 using PagMenos.Application.Interfaces.Services;
 using PagMenos.Application.Shared.Exceptions;
 using PagMenos.Application.Shared.ExceptionsDTOs;
 using PagMenos.Application.Shared.ExceptionsExtensions;
+using PagMenos.Infraestructure.DataContexts;
+using PagMenos.Application.Shared.DTOs;
 
 namespace PagMenos.Presentation.Controllers
 {
@@ -34,6 +36,10 @@ namespace PagMenos.Presentation.Controllers
 			mapper = _mapper;
 		}
 
+		/// <summary>
+		/// Retorna lista de pedidos
+		/// </summary>
+		/// <returns>Lista paginada de pedidos</returns>
 		[HttpGet("List")]
 		public async Task<IActionResult> getAllOrder()
 		{
@@ -41,7 +47,7 @@ namespace PagMenos.Presentation.Controllers
 			try
 			{
 
-				var listOrder = await service.GetPagedAsync();
+				var listOrder = await service.ListPagedOrder();
 
 				if (listOrder.Items == null)
 				{
@@ -65,9 +71,6 @@ namespace PagMenos.Presentation.Controllers
 				logger.LogError(ex, ex.Message);
 				return new CustomHttpResponseException("INTERNAL_SERVER_ERROR", ex.Message).ToActionResult();
 			}
-
-
-
 		}
 
 		/// <summary>
@@ -120,11 +123,8 @@ namespace PagMenos.Presentation.Controllers
 			try
 			{
 
-				order.GenerateOrderNumberIfEmpty();
+				await service.CreateOrder(order);
 
-				var orderMapped = mapper.Map<Order>(order);
-
-				await service.AddAsync(orderMapped);
 				return Ok(new
 				{
 					message = "Order created successfully",

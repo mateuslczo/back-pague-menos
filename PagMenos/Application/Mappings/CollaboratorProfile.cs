@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using OrderDataManagement.Domain.Entities;
+using PagMenos.Domain.Entities;
 using PagMenos.Application.Shared.ExceptionsDTOs;
 
 namespace PagMenos.Application.Mappings

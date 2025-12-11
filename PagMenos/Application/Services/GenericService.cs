@@ -1,12 +1,11 @@
-﻿using OrderDataManagement.Domain.Interfaces;
-using PagMenos.Application.Interfaces.Services;
+﻿using PagMenos.Application.Interfaces.Services;
+using PagMenos.Domain.Interfaces;
 using PagMenos.Infraestructure.DataContexts;
 using System.Linq.Expressions;
 
 namespace PagMenos.Application.Services
 {
 	public class GenericService<T> :IGenericService<T> where T : class
-
 	{
 
 		private readonly IGenericRepository<T> repository;
@@ -16,11 +15,16 @@ namespace PagMenos.Application.Services
 			repository = _repository;
 		}
 
+
+		public async Task<int> CommitAsync()
+		{
+			var affectedRecno = await repository.CommitChangesAsync();
+			return affectedRecno;
+		}
+
 		public async Task AddAsync(T t)
 		{
-
 			await repository.AddAsync(t);
-
 		}
 
 		public async Task<T?> GetByIdAsync(long id)
@@ -41,10 +45,11 @@ namespace PagMenos.Application.Services
 			repository.Remove(t);
 		}
 
-		public Task<PagedResult<T>> GetPagedAsync(int page = 1, int pageSize = 10, Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool asNoTracking = true)
+		public Task<PagedResult<T>> PaginatedListAsync(int page = 1, int pageSize = 10, Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, string[]? includes = null, bool asNoTracking = true)
 		{
-			var result = repository.GetPagedAsync(page, pageSize, filter, orderBy, asNoTracking);
+			var result = repository.PaginatedListAsync(page, pageSize, filter, orderBy, includes, asNoTracking);
 			return result;
 		}
+
 	}
 }

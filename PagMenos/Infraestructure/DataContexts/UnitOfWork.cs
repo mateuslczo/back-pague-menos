@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using OrderDataManagement.Domain.Interfaces;
-using OrderDataManagement.Infraestructure.Repositories;
-using OrderDataManagement.Infrastructure.Data;
-using PagueMenos.Domain.Interfaces;
+using PagMenos.Domain.Interfaces;
+using PagMenos.Infraestructure.Repositories;
+using PagMenos.Infrastructure.Data;
 
-namespace PagueMenos.Infraestructure.Data
+namespace PagMenos.Infraestructure.Data
 {
 	public class UnitOfWork :IUnitOfWork
 	{
@@ -18,6 +17,7 @@ namespace PagueMenos.Infraestructure.Data
 			OrderRepository = new OrderRepository(context);
 			ProductRepository = new ProductRepository(context);
 			CollaboratorRepository = new CollaboratorRepository(context);
+			OrderItemRepository = new OrderItemRepository(context);
 
 		}
 
@@ -42,7 +42,26 @@ namespace PagueMenos.Infraestructure.Data
 			if (transaction != null)
 			{
 				await transaction.CommitAsync();
-				await transaction.DisposeAsync();
+				Dispose();
+			}
+		}
+
+
+		public async Task RollbackTransactionAsync()
+		{
+			if (transaction != null)
+			{
+				await transaction.RollbackAsync();
+				Dispose();
+			}
+
+		}
+
+		public void Dispose()
+		{
+			if (transaction != null)
+			{
+				transaction.DisposeAsync();
 			}
 		}
 	}

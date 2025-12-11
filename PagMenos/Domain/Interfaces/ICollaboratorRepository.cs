@@ -1,6 +1,6 @@
-﻿using OrderDataManagement.Domain.Entities;
+﻿using PagMenos.Domain.Entities;
 
-namespace OrderDataManagement.Domain.Interfaces
+namespace PagMenos.Domain.Interfaces
 {
 	public interface ICollaboratorRepository : IGenericRepository<Collaborator>
 	{

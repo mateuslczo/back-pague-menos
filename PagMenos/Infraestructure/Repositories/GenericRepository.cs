@@ -1,10 +1,10 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using OrderDataManagement.Infrastructure.Data;
+using PagMenos.Infrastructure.Data;
 using PagMenos.Infraestructure.DataContexts;
 using System.Linq.Expressions;
 
-namespace OrderDataManagement.Domain.Interfaces
+namespace PagMenos.Domain.Interfaces
 {
 	public class GenericRepository<T> :IGenericRepository<T> where T : class
 
@@ -14,6 +14,14 @@ namespace OrderDataManagement.Domain.Interfaces
 		public GenericRepository(EFDbContext _context)
 		{
 			context = _context;
+		}
+
+		public async Task<int> CommitChangesAsync()
+		{
+
+			var affectRecno = await context.SaveChangesAsync();
+			return affectRecno;
+
 		}
 
 		public async Task AddAsync(T t)
@@ -41,12 +49,21 @@ namespace OrderDataManagement.Domain.Interfaces
 			context.Set<T>().Remove(t).State = EntityState.Deleted;
 		}
 
-		public async Task<PagedResult<T>> GetPagedAsync(int page=1, int pageSize = 10, Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool asNoTracking = true)
+		public async Task<PagedResult<T>> PaginatedListAsync(int page = 1, int pageSize = 10, Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, string[]? includes = null, bool asNoTracking = true)
 		{
 			IQueryable<T> query = context.Set<T>();
 
 			if (asNoTracking)
 				query = query.AsNoTracking();
+
+			if (includes != null && includes.Length > 0)
+			{
+				foreach (var include in includes)
+				{
+					query = query.Include(include);
+				}
+			}
+
 
 			if (filter != null)
 				query = query.Where(filter);

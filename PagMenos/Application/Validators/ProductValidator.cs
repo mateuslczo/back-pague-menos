@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using OrderDataManagement.Domain.Entities;
+using PagMenos.Domain.Entities;
 
 public class ProductValidator :AbstractValidator<Product>
 {

@@ -1,8 +1,8 @@
-﻿using OrderDataManagement.Domain.Entities;
-using OrderDataManagement.Domain.Interfaces;
-using OrderDataManagement.Infrastructure.Data;
+﻿using PagMenos.Domain.Entities;
+using PagMenos.Domain.Interfaces;
+using PagMenos.Infrastructure.Data;
 
-namespace OrderDataManagement.Infraestructure.Repositories
+namespace PagMenos.Infraestructure.Repositories
 {
 
 	public class ProductRepository :GenericRepository<Product>, IProductRepository

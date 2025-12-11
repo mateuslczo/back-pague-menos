@@ -1,4 +1,4 @@
-﻿namespace OrderDataManagement.Domain.Interfaces
+﻿namespace PagMenos.Domain.Interfaces
 {
 	public record EntityBase
 	{

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using OrderDataManagement.Domain.Enums;
-using OrderDataManagement.Domain.Interfaces;
+using PagMenos.Domain.Enums;
+using PagMenos.Domain.Interfaces;
 
-namespace OrderDataManagement.Domain.Entities
+namespace PagMenos.Domain.Entities
 {
 	public record Order :EntityBase
 	{

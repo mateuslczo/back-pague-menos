@@ -1,7 +1,7 @@
 ﻿using PagMenos.Infraestructure.DataContexts;
 using System.Linq.Expressions;
 
-namespace OrderDataManagement.Domain.Interfaces
+namespace PagMenos.Domain.Interfaces
 {
 	public interface IGenericRepository<T> where T : class
 	{
@@ -13,11 +13,14 @@ namespace OrderDataManagement.Domain.Interfaces
 
 		void Update(T t);
 
-		Task<PagedResult<T>> GetPagedAsync(
+		Task<int> CommitChangesAsync();
+
+		Task<PagedResult<T>> PaginatedListAsync(
 		   int page,
 		   int pageSize,
 		   Expression<Func<T, bool>>? filter = null,
 		   Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+		   string[]? includes = null,
 		   bool asNoTracking = true
 	   );
 	}

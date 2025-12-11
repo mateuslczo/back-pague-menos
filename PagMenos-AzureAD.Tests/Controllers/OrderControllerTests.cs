@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Moq;
-using OrderDataManagement.Domain.Entities;
+using PagMenos.Domain.Entities;
 using PagMenos.Application.Interfaces.Services;
 using PagMenos.Application.Shared.ExceptionsDTOs;
 using PagMenos.Presentation.Filters;
