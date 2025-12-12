@@ -1,4 +1,4 @@
-﻿using OrderDataManagement.Domain.Enums;
+﻿using PagMenos.Domain.Enums;
 
 namespace PagMenos.Application.Shared.ExceptionsDTOs
 {

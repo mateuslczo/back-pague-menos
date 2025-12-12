@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using OrderDataManagement.Domain.Entities;
-using OrderDataManagement.Domain.Interfaces;
-using OrderDataManagement.Domain.Validators;
+using PagMenos.Domain.Entities;
+using PagMenos.Domain.Interfaces;
+using PagMenos.Domain.Validators;
 using PagMenos.Application.ConfigModels;
 using PagMenos.Application.Shared.ExceptionsDTOs;
 using PagMenos.Application.Shared.Exceptions;

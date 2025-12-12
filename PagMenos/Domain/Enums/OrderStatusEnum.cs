@@ -1,4 +1,4 @@
-﻿namespace OrderDataManagement.Domain.Enums
+﻿namespace PagMenos.Domain.Enums
 {
 	public enum OrderStatusEnum
 	{

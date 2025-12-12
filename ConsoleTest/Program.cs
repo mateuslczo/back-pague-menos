@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
-using OrderDataManagement.Domain.Entities;
-using OrderDataManagement.Domain.Interfaces;
-using OrderDataManagement.Infraestructure.Repositories;
-using OrderDataManagement.Infrastructure.Data;
+using PagMenos.Domain.Entities;
+using PagMenos.Domain.Interfaces;
+using PagMenos.Infraestructure.Repositories;
+using PagMenos.Infrastructure.Data;
 using PagueMenos.Domain.Interfaces;
 using PagueMenos.Infraestructure.Data;
 

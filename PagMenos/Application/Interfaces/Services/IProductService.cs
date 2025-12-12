@@ -1,4 +1,4 @@
-﻿using OrderDataManagement.Domain.Entities;
+﻿using PagMenos.Domain.Entities;
 
 namespace PagMenos.Application.Interfaces.Services
 {

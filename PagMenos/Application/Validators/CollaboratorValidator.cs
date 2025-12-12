@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using OrderDataManagement.Domain.Entities;
+using PagMenos.Domain.Entities;
 using PagMenos.Application.Shared.ExceptionsDTOs;
 
-namespace OrderDataManagement.Domain.Validators
+namespace PagMenos.Domain.Validators
 {
 	public class CollaboratorValidator :AbstractValidator<CollaboratorDto>
 	{

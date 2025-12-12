@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrderDataManagement.Domain.Entities;
-using OrderDataManagement.Domain.Interfaces;
+using PagMenos.Domain.Entities;
+using PagMenos.Domain.Interfaces;
 using PagMenos.Application.Shared.Exceptions;
 
 namespace PagMenos.Application.Services

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OrderDataManagement.Domain.Entities;
+using PagMenos.Domain.Entities;
 using PagMenos.Application.Interfaces.Services;
 using PagMenos.Application.Shared.Exceptions;
 using PagMenos.Application.Shared.ExceptionsExtensions;

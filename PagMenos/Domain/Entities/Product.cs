@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using OrderDataManagement.Domain.Interfaces;
+using PagMenos.Domain.Interfaces;
 
-namespace OrderDataManagement.Domain.Entities
+namespace PagMenos.Domain.Entities
 {
 	public record Product :EntityBase
 	{

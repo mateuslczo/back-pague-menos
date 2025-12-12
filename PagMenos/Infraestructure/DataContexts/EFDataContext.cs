@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 
-using OrderDataManagement.Domain.Entities;
+using PagMenos.Domain.Entities;
 
-namespace OrderDataManagement.Infrastructure.Data
+namespace PagMenos.Infrastructure.Data
 {
 	/// <summary>
 	/// Classe de contexto - EF Core

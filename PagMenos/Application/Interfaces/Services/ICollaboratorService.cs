@@ -1,7 +1,7 @@
-﻿using OrderDataManagement.Domain.Entities;
+﻿using PagMenos.Domain.Entities;
 using PagMenos.Application.Interfaces.Services;
 
-namespace OrderDataManagement.Domain.Interfaces
+namespace PagMenos.Domain.Interfaces
 {
 	public interface ICollaboratorService : IGenericService<Collaborator>
 	{
