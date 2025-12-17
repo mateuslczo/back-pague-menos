@@ -49,14 +49,14 @@ namespace PagMenos.Presentation.Controllers
 
 				var listOrder = await service.ListPagedOrder();
 
-				if (listOrder.Items == null)
+				if (listOrder.orderItems == null)
 				{
 					logger.LogInformation("Nenhum pedido encontrado {TotalItens}", listOrder.TotalItems);
 					return new CustomHttpResponseException("ORDER_NOTFOUND", "Nenhum pedido encontrado").ToActionResult();
 
 				}
 
-				if (listOrder.Items.Count() == 0)
+				if (listOrder.orderItems.Count() == 0)
 				{
 					logger.LogInformation("Nenhum pedido encontrado {TotalItens}", listOrder.TotalItems);
 					return new CustomHttpResponseException("ORDER_NOTFOUND", "Nenhum pedido encontrado").ToActionResult();

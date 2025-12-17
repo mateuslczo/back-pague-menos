@@ -34,7 +34,7 @@ namespace PagMenos.Application.Mappings
 			CreateMap<OrderItem, OrderItemDto>().ReverseMap();
 
 			CreateMap<PagedResult<Order>, PagedOrderResultDto>()
-				.ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.Items))
+				.ForMember(dest => dest.orderItems, opt => opt.MapFrom(src => src.Items))
 				.ForMember(dest => dest.Page, opt => opt.MapFrom(src => src.Page))
 				.ForMember(dest => dest.PageSize, opt => opt.MapFrom(src => src.PageSize))
 				.ForMember(dest => dest.TotalItems, opt => opt.MapFrom(src => src.TotalItems))
