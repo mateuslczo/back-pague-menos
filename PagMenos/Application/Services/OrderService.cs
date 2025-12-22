@@ -21,8 +21,21 @@ namespace PagMenos.Application.Services
 		}
 
 
+		public async Task<int> RemoveOrder(OrderDto order)
+		{
+			var orderMapped = mapper.Map<Order>(order);
 
-		public async Task<int> CreateOrder(CreateOrderDto order)
+			Remove(orderMapped);
+
+			var rowsAffected = await CommitAsync();
+
+			return rowsAffected;
+
+		}
+
+
+
+		public async Task<long> CreateOrder(CreateOrderDto order)
 		{
 
 			order.GenerateOrderNumberIfEmpty();
@@ -31,9 +44,9 @@ namespace PagMenos.Application.Services
 
 			await AddAsync(orderMapped);
 
-			var rowsAffected = await CommitAsync();
+			await CommitAsync();
 
-			return rowsAffected;
+			return orderMapped.Id;
 
 		}
 
@@ -49,13 +62,30 @@ namespace PagMenos.Application.Services
 		}
 
 
+		public async Task<int> UpdateOrder(string orderNumber, OrderDto order)
+		{
 
-		public async Task<Order?> GetOrderByNumber(string number)
+			var orderMapped = mapper.Map<Order>(order);
+			orderMapped.OrderNumber = orderNumber.ToString();
+
+			Update(orderMapped);
+
+			var rowsAffected = await CommitAsync();
+
+			return rowsAffected;
+
+		}
+
+
+
+		public async Task<OrderDto?> GetOrderByNumber(string number)
 		{
 			var result = await repository.GetOrderByNumber(number).FirstOrDefaultAsync();
 
-			return result;
-		}
+			var orderMapped = mapper.Map<OrderDto?>(result);
 
+			return orderMapped;
+
+		}
 	}
 }

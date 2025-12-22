@@ -48,6 +48,7 @@ namespace PagMenos.Application.Shared.Exceptions
 				"DUPLICATE_ACCOUNT" => 409,
 				"JWT_CONFIGURATION_ERROR" => 500,
 				"INTERNAL_SERVER_ERROR" => 500,
+				"BAD_REQUEST" => 400,
 				_ => 500
 			};
 		}

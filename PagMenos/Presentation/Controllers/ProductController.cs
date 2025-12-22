@@ -10,16 +10,16 @@ namespace PagMenos.Presentation.Controllers
 	[ApiController]
 	[ServiceFilter(typeof(RequireAuthenticatedUserFilter))]
 	[Route("api/[controller]")]
-	public class InsumoController :ControllerBase
+	public class ProductController :ControllerBase
 	{
 
 		private readonly IProductService service;
-		private readonly ILogger<InsumoController> logger;
+		private readonly ILogger<ProductController> logger;
 		private readonly ProductValidator validator;
 
-		public InsumoController(
+		public ProductController(
 			IProductService _service,
-			ILogger<InsumoController> _logger,
+			ILogger<ProductController> _logger,
 			ProductValidator _validator)
 		{
 			service = _service;

@@ -1,4 +1,5 @@
-﻿using PagMenos.Domain.Entities;
+﻿using PagMenos.Application.Shared.ExceptionsDTOs;
+using PagMenos.Domain.Entities;
 
 namespace PagMenos.Application.Interfaces.Services
 {
@@ -17,5 +18,19 @@ namespace PagMenos.Application.Interfaces.Services
 		/// <param name="product"></param>
 		/// <returns>IQueryable<Product></returns>
 		Task<List<Product>> GetProductByNameAsync(string product);
+
+		/// <summary>
+		/// Atualiza um produto
+		/// </summary>
+		/// <param name="product"></param>
+		/// <returns>Numero de linhas afetadas</returns>
+		Task<int> UpdateProduct(long id, ProductDto product);
+
+		/// <summary>
+		/// Insere um produto
+		/// </summary>
+		/// <param name="product"></param>
+		/// <returns>Id do produto</returns>
+		Task<long> CreateProduct(ProductDto product);
 	}
 }
