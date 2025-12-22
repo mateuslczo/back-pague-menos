@@ -12,7 +12,23 @@ namespace PagMenos.Application.Interfaces.Services
 		/// </summary>
 		/// <param name="order"></param>
 		/// <returns></returns>
-		Task<int> CreateOrder(CreateOrderDto order);
+		Task<long> CreateOrder(CreateOrderDto order);
+
+		/// <summary>
+		/// Atualiza um pedido
+		/// </summary>
+		/// <param name="order"></param>
+		/// <returns></returns>
+		Task<int> UpdateOrder(string orderNumber, OrderDto order);
+
+
+		/// <summary>
+		/// Atualiza um pedido
+		/// </summary>
+		/// <param name="order"></param>
+		/// <returns></returns>
+		Task<int> RemoveOrder(OrderDto order);
+
 
 		/// <summary>
 		/// Recuperar lista e pedidos
@@ -26,7 +42,7 @@ namespace PagMenos.Application.Interfaces.Services
 		/// </summary>
 		/// <param name="number"></param>
 		/// <returns>IQueryable<Order></returns>
-		Task<Order> GetOrderByNumber(string number);
+		Task<OrderDto?> GetOrderByNumber(string number);
 
 	}
 }
